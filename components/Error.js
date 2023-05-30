@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
-import Colors from '../theme/Colors';
+
 
 const propTypes = {
     errorText1: PropTypes.string,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     },
     text: {
       fontWeight: 'bold',
-      color: Colors.danger,
+      color:"#F5365C",
     },
   });
 

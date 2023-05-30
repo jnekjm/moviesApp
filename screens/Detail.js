@@ -19,7 +19,7 @@ import VideoPlayer from 'react-native-video-controls';
 import Video from 'react-native-video';
 import StopButton from '../components/StopButton';
 
-const placeholderImage = require('../assets/images/factsoft.ico')
+
 const height = Dimensions.get('screen').height;
 
 const Detail = ({route, navigation}) => {

@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from "react";
-import {SliderBox} from 'react-native-image-slider-box';
+import { SliderBox } from 'react-native-image-slider-box';
 import List from '../components/List';
 import Error from '../components/Error';
 import {
-    ActivityIndicator,
-    view,
-    StyleSheet,
-    Dimansions,
-    Scrollview,
+  ActivityIndicator,
+  View,
+  StyleSheet,
+  Dimensions,
+  ScrollView,
 } from 'react-native';
 
 import {
-    getPopularMovies,
-    getUpcomingMovies,
-    getPopularTv,
-    getFamilyMovies,
-    getDocumentaryMovies,
-  } from "../services/service";
-  
+  getPopularMovies,
+  getUpcomingMovies,
+  getPopularTv,
+  getFamilyMovies,
+  getDocumentaryMovies,
+} from "../services/service";
 
-  const dimentions = Dimensions.get('screen');
-  
-const Home = ({navigation}) => {
+const dimensions = Dimensions.get('screen');
+
+const Home = ({ navigation }) => {
   const [moviesImages, setMoviesImages] = useState();
   const [popularMovies, setPopularMovies] = useState();
   const [popularTv, setPopularTv] = useState();
@@ -33,38 +32,36 @@ const Home = ({navigation}) => {
 
   const getData = () => {
     return Promise.all([
-        getPopularMovies(),
-        getUpcomingMovies(),
-        getPopularTv(),
-        getFamilyMovies(),
-        getDocumentaryMovies(),
+      getPopularMovies(),
+      getUpcomingMovies(),
+      getPopularTv(),
+      getFamilyMovies(),
+      getDocumentaryMovies(),
     ]);
   };
 
   useEffect(() => {
     getData()
-      .then(
-        ([
-          upcomingMoviesData,
-          popularMoviesData,
-          popularTvData,
-          familyMoviesData,
-          documentaryMoviesData,
-        ]) => {
-          const moviesImagesArray = [];
-          upcomingMoviesData.forEach(movie => {
-            moviesImagesArray.push(
-              'https://image.tmdb.org/t/p/w500' + movie.poster_path,
-            );
-          });
+      .then(([
+        upcomingMoviesData,
+        popularMoviesData,
+        popularTvData,
+        familyMoviesData,
+        documentaryMoviesData,
+      ]) => {
+        const moviesImagesArray = [];
+        upcomingMoviesData.forEach(movie => {
+          moviesImagesArray.push(
+            'https://image.tmdb.org/t/p/w500' + movie.poster_path,
+          );
+        });
 
-          setMoviesImages(moviesImagesArray);
-          setPopularMovies(popularMoviesData);
-          setPopularTv(popularTvData);
-          setFamilyMovies(familyMoviesData);
-          setDocumentaryMovies(documentaryMoviesData);
-        },
-      )
+        setMoviesImages(moviesImagesArray);
+        setPopularMovies(popularMoviesData);
+        setPopularTv(popularTvData);
+        setFamilyMovies(familyMoviesData);
+        setDocumentaryMovies(documentaryMoviesData);
+      })
       .catch(() => {
         setError(true);
       })
@@ -77,59 +74,59 @@ const Home = ({navigation}) => {
     <React.Fragment>
       {/* Upcoming Movies */}
       {loaded && !error && (
-        <Scrollview>
+        <ScrollView>
           {moviesImages && (
-            <view style={styles.sliderContainer}>
+            <View style={styles.sliderContainer}>
               <SliderBox
                 images={moviesImages}
                 dotStyle={styles.sliderStyle}
-                sliderBoxHeight={dimentions.height / 1.5}
+                sliderBoxHeight={dimensions.height / 1.5}
                 autoplay={true}
                 circleLoop={true}
               />
-            </view>
+            </View>
           )}
           {/* Popular Movies */}
           {popularMovies && (
-            <view style={styles.carousel}>
+            <View style={styles.carousel}>
               <List
                 navigation={navigation}
-                title={'Películas populares entre el público'}
+                title={'Películas populares entre el público 🥳 '}
                 content={popularMovies}
               />
-            </view>
+            </View>
           )}
           {/* Popular TV Shows */}
           {popularTv && (
-            <view style={styles.carousel}>
+            <View style={styles.carousel}>
               <List
                 navigation={navigation}
-                title={'Programas de TV populares'}
+                title={'Programas de TV populares  💯 😍 '}
                 content={popularTv}
               />
-            </view>
+            </View>
           )}
           {/* Family Movies */}
           {familyMovies && (
-            <view style={styles.carousel}>
+            <View style={styles.carousel}>
               <List
                 navigation={navigation}
-                title={'Películas familiares'}
+                title={'Películas familiares   👨‍👩‍👧‍👦  ❤️ 👩‍👧‍👦 '}
                 content={familyMovies}
               />
-            </view>
+            </View>
           )}
           {/* Documentary Movies */}
           {documentaryMovies && (
-            <view style={styles.carousel}>
+            <View style={styles.carousel}>
               <List
                 navigation={navigation}
-                title={'Documentales'}
+                title={'Documentales  💁 🕵️‍♂️ 🧑‍🎤 👀 '}
                 content={documentaryMovies}
               />
-            </view>
+            </View>
           )}
-        </Scrollview>
+        </ScrollView>
       )}
       {!loaded && <ActivityIndicator size="large" />}
       {error && <Error />}
@@ -141,6 +138,7 @@ const Home = ({navigation}) => {
 
 
 const styles = StyleSheet.create({
+
     sliderContainer: {
        flex: 1,
        justifyContent: 'center',
@@ -157,7 +155,11 @@ const styles = StyleSheet.create({
        alignItems: 'center',
    
   },
+
+
+  
 });
+
 
 
    export default Home 

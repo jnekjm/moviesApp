@@ -2,8 +2,6 @@ import * as React from 'react';
 import {TouchableOpacity, StyleSheet, Image, Text} from 'react-native';
 import PropTypes from 'prop-types';
 
-const placeholderImage = require('../assets/images/factsoft.ico');
-
 
 const propTypes = {
     item: PropTypes.object,
@@ -17,14 +15,10 @@ class Card extends React.PureComponent {
           onPress={() => navigation.navigate('Detail', {movieId: item.id})}
           style={styles.container}>
           <Image
-            resizeMode="cover"
-            style={styles.image}
-            source={
-              item.poster_path
-                ? {uri: 'https://image.tmdb.org/t/p/w500' + item.poster_path}
-                : placeholderImage
-            }
-          />
+  resizeMode="cover"
+  style={styles.image}
+  source={{uri: 'https://image.tmdb.org/t/p/w500' + item.poster_path}}
+/>
           {!item.poster_path && (
             <Text style={styles.movieName}>{item.title}</Text>
           )}

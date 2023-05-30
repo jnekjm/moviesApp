@@ -9,7 +9,6 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
 
-import Colors from '../theme/Colors';
 
 const propTypes = {
     main: PropTypes.bool,
@@ -28,13 +27,13 @@ const propTypes = {
             <View style={styles.mainNav}>
               <Image
                 style={styles.logo}
-                source={require('../assets/images/factsoft.png')}
+               
               />
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate('busqueda');
+                  navigation.navigate('Search');
                 }}>
-                <Icon name={'search-outline'} size={30} color={Colors.white} />
+                <Icon name={'search-outline'} size={30} color="#fff" />
               </TouchableOpacity>
             </View>
           ) : (
@@ -65,6 +64,17 @@ const propTypes = {
       height: 50,
     },
   });
+  const Colors = {
+    background: '#1E1E1E',
+    black: '#000000',
+    white: '#ffffff',
+    lightGray: '#ccc',
+    primary: '#4481FC',
+    danger: '#F5365C',
+  };
+  
+
+  
   
   Navbar.propTypes = propTypes;
   Navbar.defaultProps = defaultProps;

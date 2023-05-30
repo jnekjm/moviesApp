@@ -9,7 +9,7 @@ import {
   Text,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {searchMovieTv} from '../services/services';
+import {searchMovieTv} from '../services/service';
 import Card from '../components/Card';
 import Error from '../components/Error';
 
