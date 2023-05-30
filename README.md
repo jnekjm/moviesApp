@@ -1,0 +1,1 @@
+Aplicación móvil de películas en la que para su creación se utilizó la página web de the movies database y postman para verificar las URL para saber si están correctamente, y las vistas reflejan un interfaz en el expo de una aplicación de películas donde se puede encontrar variedades de películas 
